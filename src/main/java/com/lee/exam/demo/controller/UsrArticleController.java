@@ -1,7 +1,6 @@
 package com.lee.exam.demo.controller;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -41,6 +40,15 @@ public class UsrArticleController {
 		articles.remove(article);
 	}
 
+	// 수정
+	private void ModifyArticle(int id, String title, String body) {
+		Article article = getArticle(id);
+		article.setTitle(title);
+		article.setBody(body);
+		
+	}
+
+	// 작성
 	private Article writeArticle(String title, String body) {
 		int id = lastArticleId + 1;
 		Article article = new Article(id, title, body);
@@ -79,6 +87,18 @@ public class UsrArticleController {
 		}
 		deleteArticle(id);
 		return id + "번 게시물을 삭제했습니다.";
+	}
+
+	// 게시물 수정
+	@RequestMapping("/usr/article/doModify")
+	@ResponseBody
+	public String doModify(int id, String title, String body) {
+		Article article = getArticle(id);
+		if (article == null) {
+			return id + "번 게시물은 없던데?";
+		}
+		ModifyArticle(id, title, body);
+		return id + "번 게시물을 수정 했습니다." +article.getId();
 	}
 
 	// 게시물 리스트 조회
