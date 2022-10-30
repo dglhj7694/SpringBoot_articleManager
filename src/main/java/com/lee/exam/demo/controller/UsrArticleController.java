@@ -23,28 +23,18 @@ public class UsrArticleController {
 		makeTestData();
 	}
 
-	//make test data
-	private void makeTestData() {
-		for (int i = 0; i < 10; i++) {
-			int id = lastArticleId++;
-			String title = "제목" + i;
-			String body = "내용" + i;
-
-			Article article = new Article(id, title, body);
-			articles.add(article);
-			lastArticleId = id;
-		}
+	private Article writeArticle(String title, String body) {
+		int id = lastArticleId + 1;
+		Article article = new Article(id, title, body);
+		articles.add(article);
+		lastArticleId = id;
+		return article;
 	}
 
 	@RequestMapping("/usr/article/doAdd")
 	@ResponseBody
 	public Article doAdd(String title, String body) {
-		int id = lastArticleId + 1;
-		Article article = new Article(id, title, body);
-
-		articles.add(article);
-		lastArticleId = id;
-
+		Article article = writeArticle(title, body);
 		return article;
 	}
 
@@ -53,6 +43,16 @@ public class UsrArticleController {
 	public List<Article> getArticles() {
 
 		return articles;
+	}
+
+	// make test data
+	private void makeTestData() {
+		for (int i = 0; i < 10; i++) {
+			String title = "제목" + i;
+			String body = "내용" + i;
+
+			writeArticle(title, body);
+		}
 	}
 
 }
