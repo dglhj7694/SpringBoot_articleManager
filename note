@@ -1,0 +1,38 @@
+== project config == 
+type : maven project
+packaging : war
+java version : 17 
+
+- project dependency 
+Lombok
+Spring Boot DevTools
+Spring Web
+
+
+==  MVC
+C_ Controller 
+M_ Service/ Repository(DAO)/DB
+V_ JSP
+
+
+
+== Spring Annotation
+-@Component
+component-scan을 선언에 의해 특정 패키지 안의 클래스들을 스캔하고, 
+@Component Annotation이 있는 클래스에 대하여 bean 인스턴스를 생성한다.
+
+-@Controller
+@Controller, @Service, @Repository
+@Component —구체화—> @Controller, @Service, @Repository
+bean으로 등록
+해당 클래스가 Controller/Service/Repository로 사용됨을 Spring Framework에 알린다.
+
+-@RequestMapping
+value: 해당 url로 요청이 들어오면 이 메서드가 수행된다.
+method: 요청 method를 명시한다. 없으면 모든 http method 형식에 대해 수행된다.
+@ResponseBody
+이 어노테이션이 붙은 파라미터에는 http요청의 본문(body)이 그대로 전달된다. 
+일반적인 GET/POST의 요청 파라미터라면 @RequestBody를 사용할 일이 없을 것이다.
+반면에 xml이나 json기반의 메시지를 사용하는 요청의 경우에 이 방법이 매우 유용하다.
+HTTP 요청의 바디내용을 통째로 자바객체로 변환해서 매핑된 메소드 파라미터로 전달해준다. 
+출처: https://cheershennah.tistory.com/179 [Today I Learned. @cheers_hena 치얼스헤나:티스토리]
