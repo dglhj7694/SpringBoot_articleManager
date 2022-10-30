@@ -1,6 +1,7 @@
 package com.lee.exam.demo.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,22 @@ public class UsrArticleController {
 	public UsrArticleController() {
 		lastArticleId = 0;
 		articles = new ArrayList<>();
+
+		// test data
+		makeTestData();
+	}
+
+	//make test data
+	private void makeTestData() {
+		for (int i = 0; i < 10; i++) {
+			int id = lastArticleId++;
+			String title = "제목" + i;
+			String body = "내용" + i;
+
+			Article article = new Article(id, title, body);
+			articles.add(article);
+			lastArticleId = id;
+		}
 	}
 
 	@RequestMapping("/usr/article/doAdd")
@@ -30,4 +47,12 @@ public class UsrArticleController {
 
 		return article;
 	}
+
+	@RequestMapping("/usr/article/getArticles")
+	@ResponseBody
+	public List<Article> getArticles() {
+
+		return articles;
+	}
+
 }
