@@ -23,6 +23,11 @@ public class ArticleService {
 	}
 
 	// 서비스메서드
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : makeTestData void
+	 */
 	private void makeTestData() {
 		for (int i = 1; i <= 10; i++) {
 			String title = "제목 " + i;
@@ -32,6 +37,13 @@ public class ArticleService {
 		}
 	}
 
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : getArticle
+	 * @param id
+	 * @return Article
+	 */
 	public Article getArticle(int id) {
 		for (Article article : articles) {
 			if (article.getId() == id) {
@@ -42,6 +54,14 @@ public class ArticleService {
 		return null;
 	}
 
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : writeArticle
+	 * @param title
+	 * @param body
+	 * @return Article
+	 */
 	public Article writeArticle(String title, String body) {
 		int id = lastArticleId + 1;
 		Article article = new Article(id, title, body);
@@ -52,12 +72,26 @@ public class ArticleService {
 		return article;
 	}
 
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : deleteArticle
+	 * @param id void
+	 */
 	public void deleteArticle(int id) {
 		Article article = getArticle(id);
 
 		articles.remove(article);
 	}
 
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : modifyArticle
+	 * @param id
+	 * @param title
+	 * @param body void
+	 */
 	public void modifyArticle(int id, String title, String body) {
 		Article article = getArticle(id);
 
@@ -65,6 +99,12 @@ public class ArticleService {
 		article.setBody(body);
 	}
 
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : articles
+	 * @return List<Article>
+	 */
 	public List<Article> articles() {
 		return articles;
 	}

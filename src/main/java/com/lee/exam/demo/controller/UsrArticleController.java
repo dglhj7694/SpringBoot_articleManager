@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lee.exam.demo.service.ArticleService;
 import com.lee.exam.demo.vo.Article;
 
+
 @Controller
 public class UsrArticleController {
 
@@ -18,6 +19,15 @@ public class UsrArticleController {
 	private ArticleService articleService;
 
 	// 액션메서드
+
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : doAdd
+	 * @param title
+	 * @param body
+	 * @return Article
+	 */
 	@RequestMapping("/usr/article/doAdd")
 	@ResponseBody
 	public Article doAdd(String title, String body) {
@@ -26,12 +36,26 @@ public class UsrArticleController {
 		return article;
 	}
 
+	
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : getArticles
+	 * @return List<Article>
+	 */
 	@RequestMapping("/usr/article/getArticles")
 	@ResponseBody
 	public List<Article> getArticles() {
-		return articleService.articles();
+		return articleService.articles();	
 	}
 
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : doDelete
+	 * @param id
+	 * @return String
+	 */
 	@RequestMapping("/usr/article/doDelete")
 	@ResponseBody
 	public String doDelete(int id) {
@@ -46,6 +70,15 @@ public class UsrArticleController {
 		return id + "번 게시물을 삭제했습니다";
 	}
 
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : doModify
+	 * @param id
+	 * @param title
+	 * @param body
+	 * @return Object
+	 */
 	@RequestMapping("/usr/article/doModify")
 	@ResponseBody
 	public Object doModify(int id, String title, String body) {
@@ -60,6 +93,13 @@ public class UsrArticleController {
 		return article;
 	}
 
+	/**
+	 * @Author : hjlee
+	 * @Date : 2022. 10. 31.
+	 * @Method : getArticleAction
+	 * @param id
+	 * @return Object
+	 */
 	@RequestMapping("/usr/article/getArticle")
 	@ResponseBody
 	public Object getArticleAction(int id) {
