@@ -50,8 +50,10 @@ HTTP 요청의 바디내용을 통째로 자바객체로 변환해서 매핑된 
 
 [] ARRAY, LIST
 
-
-
+XAMPP 설치
+https://www.apachefriends.org/index.html
+SQLyog community 설치
+https://github.com/webyog/sqlyog-community/wiki/Downloads
 
 
 
