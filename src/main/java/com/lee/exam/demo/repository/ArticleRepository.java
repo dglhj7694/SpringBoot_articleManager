@@ -1,68 +1,38 @@
 package com.lee.exam.demo.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.lee.exam.demo.vo.Article;
 
-@Component
-public class ArticleRepository {
+/* ::인터페이스
+ * 추상 클래스에서는 구현이 불가능
+ *  mybatis 추가 (의존 추가)
+ *  */
+@Mapper
+public interface ArticleRepository {
+	// insert into article set regDate = now(), updateDate = now() title = ? , 'body' = ?,
+	public Article writeArticle(String title, String body);
 
-	private int lastArticleId;
-	private List<Article> articles;
+	// select * from article where id = ?;
+	@Select("SELECT * FROM article where id = #{id}")
+	public Article getArticle(@Param("id") int id);
 
-	// 생성자
-	public ArticleRepository() {
-		lastArticleId = 0;
-		articles = new ArrayList<>();
-	}
+	// select * from article order by id desc;
+	@Select("SELECT * FROM article order by id desc")
+	public List<Article> getArticles();
 
-	public void makeTestData() {
-		for (int i = 1; i <= 10; i++) {
-			String title = "제목 " + i;
-			String body = "내용 " + i;
+	// delete from article where id = ?;
+	@Delete("DELETE FROM article WHERE id = #{id}")
+	public void deleteArticle(int id);
 
-			writeArticle(title, body);
-		}
-	}
-
-	public Article writeArticle(String title, String body) {
-		int id = lastArticleId + 1;
-		Article article = new Article(id, title, body);
-
-		articles.add(article);
-		lastArticleId = id;
-
-		return article;
-	}
-
-	public Article getArticle(int id) {
-		for (Article article : articles) {
-			if (article.getId() == id) {
-				return article;
-			}
-		}
-
-		return null;
-	}
-
-	public List<Article> getArticles() {
-		return articles;
-	}
-
-	public void deleteArticle(int id) {
-		Article article = getArticle(id);
-
-		articles.remove(article);
-	}
-
-	public void modifyArticle(int id, String title, String body) {
-		Article article = getArticle(id);
-
-		article.setTitle(title);
-		article.setBody(body);
-	}
+	// update article set title = ? , 'body' = ?, updateDate = now() where id = ?;
+	@Update("UPDATE article SET title = #{title}, body = #{body}, updateDate = NOW() WHERE id = #{id}")
+	public void modifyArticle(int id, String title, String body);
 
 }
