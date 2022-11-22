@@ -3,6 +3,7 @@ package com.lee.exam.demo.repository;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -17,7 +18,8 @@ import com.lee.exam.demo.vo.Article;
 @Mapper
 public interface ArticleRepository {
 	// insert into article set regDate = now(), updateDate = now() title = ? , 'body' = ?,
-	public Article writeArticle(String title, String body);
+	@Insert("INSERT INTO article SET regDate = now(), updateDate = now(), title = #{title} , body = #{body}")
+	public void writeArticle(String title, String body);
 
 	// select * from article where id = ?;
 	@Select("SELECT * FROM article where id = #{id}")
@@ -34,5 +36,8 @@ public interface ArticleRepository {
 	// update article set title = ? , 'body' = ?, updateDate = now() where id = ?;
 	@Update("UPDATE article SET title = #{title}, body = #{body}, updateDate = NOW() WHERE id = #{id}")
 	public void modifyArticle(int id, String title, String body);
+
+	@Select("SELECT LAST_INSERT_ID()")
+	public int getLastInsertId();
 
 }
