@@ -17,27 +17,22 @@ import com.lee.exam.demo.vo.Article;
  *  */
 @Mapper
 public interface ArticleRepository {
-	// insert into article set regDate = now(), updateDate = now() title = ? , 'body' = ?,
-	@Insert("INSERT INTO article SET regDate = now(), updateDate = now(), title = #{title} , body = #{body}")
+	//@Insert("INSERT INTO article SET regDate = now(), updateDate = now(), title = #{title} , body = #{body}")
 	public void writeArticle(String title, String body);
 
-	// select * from article where id = ?;
-	@Select("SELECT * FROM article where id = #{id}")
+	//@Select("SELECT * FROM article where id = #{id}")
 	public Article getArticle(@Param("id") int id);
 
-	// select * from article order by id desc;
-	@Select("SELECT * FROM article order by id desc")
+	//@Select("SELECT * FROM article order by id desc")
 	public List<Article> getArticles();
 
-	// delete from article where id = ?;
-	@Delete("DELETE FROM article WHERE id = #{id}")
+	//@Delete("DELETE FROM article WHERE id = #{id}")
 	public void deleteArticle(int id);
 
-	// update article set title = ? , 'body' = ?, updateDate = now() where id = ?;
-	@Update("UPDATE article SET title = #{title}, body = #{body}, updateDate = NOW() WHERE id = #{id}")
+	//@Update("UPDATE article SET title = #{title}, body = #{body}, updateDate = NOW() WHERE id = #{id}")
 	public void modifyArticle(int id, String title, String body);
 
-	@Select("SELECT LAST_INSERT_ID()")
+	//@Select("SELECT LAST_INSERT_ID()")
 	public int getLastInsertId();
 
 }

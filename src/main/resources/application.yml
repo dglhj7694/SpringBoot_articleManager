@@ -10,3 +10,4 @@ spring:
     
 mybatis:
   type-aliases-package: com.lee.exam.demo.vo
+  ## ArticleRepository.xml - resultType
