@@ -108,3 +108,19 @@ public interface DepartmentMapper {
 //resulttype 은 return type
 </mapper>
 
+
+==https://mybatis.org/mybatis-3/ko/dynamic-sql.html
+동적 sql
+		<set>
+			<if test="title != null and title != ''">title = #{title}</if>
+			<if test="body != null and body != ''">, body = #{body}</if>
+			, updateDate = NOW()
+		</set>
+		
+		null  >> body is null
+		'' > body is empty string
+		
+		
+		
+
+
