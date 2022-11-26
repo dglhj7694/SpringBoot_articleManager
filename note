@@ -14,6 +14,10 @@ C_ Controller
 M_ Service/ Repository(DAO)/DB
 V_ JSP
 
+json viewer 
+https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=ko
+
+
 
 
 == Spring Annotation
@@ -125,5 +129,21 @@ public interface DepartmentMapper {
 
 erd 및 sql 작성 사이트
 https://aquerytool.com/
+
+ResultData 
+결과 데이터에 대한 정리
+
+브라우저 > 컨트롤러 (응답 , 자바 일반 객체)
+컨트롤러 > 서비스 (응답 , 자바 일반 객체)
+서비스 > 레포지토리 (응답 , 자바 일반 객체)
+레포지토리 > DB  (응답 , Mybatis) 레포지토리로 보내면>> (응답 , ?) 
+
+표준 양식이 없다!
+>> resultData
+
+성공 실패 쉽게 판단가능하도록
+메세지
+>> 성공 여부, 메세지, 추가데이터
+
 
 
