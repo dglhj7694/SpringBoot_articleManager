@@ -3,6 +3,7 @@ DROP DATABASE IF EXISTS SB_AM;
 CREATE DATABASE SB_AM;
 USE SB_AM;
 
+DROP TABLE article;
 # 게시글 테이블 생성
 CREATE TABLE article(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -33,11 +34,9 @@ title = '제목3',
 
 SELECT * FROM article;
 
+SELECT LAST_INSERT_ID();
 
-#db 생성
 
-
-USE SB_AM
 
 DROP TABLE `member`;
 # 회원 테이블 생성
@@ -90,5 +89,14 @@ CREATE TABLE `member`(
     email = 'user2@gmail.com';
     
 SELECT * FROM `member`;
+
+#게시물 테이블에 회원번호 칼럼 추가
+ALTER TABLE article ADD COLUMN memberId INT(10) UNSIGNED NOT NULL AFTER `updateDate`;
+
+UPDATE article
+SET memberId = 2
+WHERE memberId = 0;
+
+SELECT * FROM article;
 
 SELECT LAST_INSERT_ID();
