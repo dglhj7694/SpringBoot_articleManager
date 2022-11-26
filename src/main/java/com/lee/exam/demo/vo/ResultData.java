@@ -2,7 +2,7 @@ package com.lee.exam.demo.vo;
 
 import lombok.Getter;
 
-public class ResultData {
+public class ResultData<T> {
 	// 성공 - 1
 	// 실패 - 0|
 	@Getter
@@ -10,12 +10,12 @@ public class ResultData {
 	@Getter
 	private String msg;
 	@Getter
-	private Object data1;
+	private T data1;
 
 	private ResultData() {
-		
+
 	}
-	
+
 	public boolean isSuccess() {
 		return resultCode.startsWith("S-");
 	}
@@ -24,20 +24,20 @@ public class ResultData {
 		return isSuccess() == false;
 	}
 
-	public static ResultData from(String resultCode, String msg, Object data1) {
-		ResultData rd = new ResultData();
+	public static <T> ResultData<T> from(String resultCode, String msg, T data1) {
+		ResultData<T> rd = new ResultData<T>();
 		rd.resultCode = resultCode;
 		rd.msg = msg;
 		rd.data1 = data1;
 		return rd;
 	}
 
-	public static ResultData from(String resultCode, String msg) {
+	public static <T> ResultData<T> from(String resultCode, String msg) {
 		return from(resultCode, msg, null);
 	}
 
-	public static ResultData newData(ResultData rd, Object newData) {
-		
-		return from(rd.getResultCode(),rd.getMsg(), newData);
+	public static <T> ResultData<T> newData(ResultData rd, T newData) {
+
+		return from(rd.getResultCode(), rd.getMsg(), newData);
 	}
 }
