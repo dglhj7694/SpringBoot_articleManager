@@ -42,7 +42,7 @@ public class usrMemberController {
 		// 회원가입완료
 		// F-1~8
 		// 실패
-		ResultData joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
+		ResultData<Integer> joinRd = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 
 		if (joinRd.isFail()) {
 			return joinRd;
