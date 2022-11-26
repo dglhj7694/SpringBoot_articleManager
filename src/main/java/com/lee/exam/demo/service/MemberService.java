@@ -37,7 +37,7 @@ public class MemberService {
 		return memberRepository.getMemberByEmail(email);
 	}
 
-	private Member getMemberByLoginId(String loginId) {
+	public Member getMemberByLoginId(String loginId) {
 		return memberRepository.getMemberByLoginId(loginId);
 	}
 
