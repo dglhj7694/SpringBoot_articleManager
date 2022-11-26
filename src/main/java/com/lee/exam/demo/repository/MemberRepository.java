@@ -39,4 +39,11 @@ public interface MemberRepository {
 			""")
 	Member getMemberByLoginId(String loginId);
 
+	@Select("""
+			SELECT *
+			FROM `member` AS M
+			WHERE M.email = #{email}
+			""")
+	Member getMemberByEmail(String email);
+
 }

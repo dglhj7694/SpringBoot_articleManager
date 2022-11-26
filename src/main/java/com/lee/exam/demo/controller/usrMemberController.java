@@ -39,7 +39,10 @@ public class usrMemberController {
 		int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 
 		if (id == -1) {
-			return "이미 사용중인 아이디 입니다";
+			return "이미 사용중인 아이디 입니다.";
+		}
+		if (id == -2) {
+			return "이미 사용중인 이메일입니다.";
 		}
 
 		Member member = memberService.getMemberById(id);
