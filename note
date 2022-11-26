@@ -148,3 +148,4 @@ ResultData
 작업 35, ResultData 클래스에 제네릭 추가
 작업 36, usrarticledaAdd에 ResultData newData 적용, 제네릭 추가
 작업 37, usrarticledoDelete, usrarticledoModify 에 ResultData 적용
+작업 38, usrmemberdoJoin ResultData 제네릭 수정
