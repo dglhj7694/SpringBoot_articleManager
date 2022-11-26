@@ -15,9 +15,14 @@ public class usrMemberController {
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
-	public Member doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
+	public Object doJoin(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
 			String email) {
 		int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNum, email);
+		
+		if (id == -1) {
+			return "이미 사용중인 아이디 입니다";
+		}
+		
 		Member member = memberService.getMemberById(id);
 		return member;
 	}
