@@ -37,7 +37,6 @@ public class ResultData<T> {
 	}
 
 	public static <T> ResultData<T> newData(ResultData rd, T newData) {
-
 		return from(rd.getResultCode(), rd.getMsg(), newData);
 	}
 }
