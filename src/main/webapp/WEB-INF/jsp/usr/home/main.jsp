@@ -6,6 +6,6 @@
 <title>메인</title>
 </head>
 <body>
-	<div>메인 페이지</div>
+	<h1>메인페이지</h1>
 </body>
 </html>
