@@ -154,3 +154,4 @@ ResultData
 httpSession 이용
 작업 41, 게시물 테이블에 회원번호 칼럼 추가, memberId field 추가, articledoAdd 시 로그인 여부 체크, 작성자에 대한 정보 저장
 작업 42, usr/article/doDelete 권한 체크
+43, usrarticledoModify 권한 체크
