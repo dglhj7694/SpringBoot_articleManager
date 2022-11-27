@@ -156,4 +156,8 @@ httpSession 이용
 작업 42, usr/article/doDelete 권한 체크
 43, usr/article/doModify 권한 체크
 작업 44, ResultData에 data1Name 추가
-
+작업 45, SQL 로거 적용
+	[
+	Repository -> Mybatis -> JDBC -> DB
+				<<			<<LOGGER(DriverSpy)
+	]
