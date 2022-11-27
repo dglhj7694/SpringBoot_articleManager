@@ -161,3 +161,6 @@ httpSession 이용
 	Repository -> Mybatis -> JDBC -> DB
 				<<			<<LOGGER(DriverSpy)
 	]
+작업 46, JSP 연결
+pom.xml > jsp/jstl 
+yml > prefix / suffix 
