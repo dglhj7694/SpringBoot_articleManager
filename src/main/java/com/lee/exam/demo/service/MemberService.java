@@ -15,7 +15,8 @@ public class MemberService {
 		this.memberRepository = memberRepository;
 	}
 
-	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum, String email) {
+	public ResultData<Integer> join(String loginId, String loginPw, String name, String nickname, String cellphoneNum,
+			String email) {
 		// 아이디 중복체크
 		Member existsMember = getMemberByLoginId(loginId);
 		if (existsMember != null) {
@@ -30,7 +31,7 @@ public class MemberService {
 
 		memberRepository.join(loginId, loginPw, name, nickname, cellphoneNum, email);
 		int id = memberRepository.getLastInsertId();
-		return ResultData.from("S-1", "회원가입 완료", id);
+		return ResultData.from("S-1", "회원가입 완료", "id", id);
 	}
 
 	private Member getMemberByEmail(String email) {
